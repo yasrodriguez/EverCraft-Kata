@@ -1,8 +1,11 @@
 package gameAssets;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.HashMap;
+
+/**
+ * Each character has 6 abilities with a score ranging from 1 to 20. Abilities also have modifiers which vary according
+ * to the ability score.
+ */
 
 public class Abilities {
 
@@ -15,6 +18,7 @@ public class Abilities {
     private int charisma;
     private HashMap<Integer, Integer> modifiers;
 
+
     public Abilities() {
         strength = DEFAULT_SCORE;
         intelligence = DEFAULT_SCORE;
@@ -26,34 +30,66 @@ public class Abilities {
         setModifiers();
     }
 
+    /**
+     * Score for Strength ability.
+     * @return strength score
+     */
     public int getStrength() {
         return strength;
     }
 
+    /**
+     * Score for Intelligence ability.
+     * @return intelligence score
+     */
     public int getIntelligence() {
         return intelligence;
     }
 
+    /**
+     * Score for Dexterity ability.
+     * @return dexterity score
+     */
     public int getDexterity() {
         return dexterity;
     }
 
+    /**
+     * Score for Wisdom ability.
+     * @return wisdom score
+     */
     public int getWisdom() {
         return wisdom;
     }
 
+    /**
+     * Score for Charisma ability.
+     * @return charisma score
+     */
     public int getCharisma() {
         return charisma;
     }
 
+    /**
+     * Score for Constitution ability.
+     * @return constitution score
+     */
     public int getConstitution() {
         return constitution;
     }
 
+    /**
+     * Each score value has a static modifier value associated with it.
+     * @param abilityScore score for an ability
+     * @return modifier for the score
+     */
     public int getModifier(int abilityScore) {
         return modifiers.get(abilityScore);
     }
 
+    /**
+     * Initializes modifiers so it contains the modifier value for each score value.
+     */
     public void setModifiers() {
         modifiers.put(1, -5);
         modifiers.put(2, -4);

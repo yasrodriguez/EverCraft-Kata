@@ -7,7 +7,7 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 
 /**
- * Unit tests for Character class for EverCraft.
+ * Unit tests for Character.
  * Created by Yasmin and Maclain on 8/12/2017
  */
 

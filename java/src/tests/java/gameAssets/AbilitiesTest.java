@@ -2,11 +2,12 @@ package gameAssets;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+import static org.junit.Assert.assertEquals;
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
-
+/**
+ * Unit tests for Abilities.
+ */
 public class AbilitiesTest {
     @Test
     public void getStrength_newCharacter_returnsDefaultScore() {
