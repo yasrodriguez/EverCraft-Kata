@@ -1,6 +1,6 @@
 package gameAssets;
 
-import java.util.HashMap;
+
 import java.util.Random;
 
 /**
@@ -13,92 +13,84 @@ public class Character {
     private Alignment alignment;
     private int armorClass;
     private int hitPoints;
-    private HashMap<AbilityType,Integer> abilities;
+    private Abilities abilities;
 
-    public Character(){
+    public Character() {
         name = "";
         alignment = Alignment.NEUTRAL;
         armorClass = 10;
         hitPoints = 5;
-        abilities = new HashMap<>();
-        Integer defaultScore = 0;
-        abilities.put(AbilityType.CHARISMA, defaultScore);
-        abilities.put(AbilityType.CONSTITUTION, defaultScore);
-        abilities.put(AbilityType.DEXTERITY, defaultScore);
-        abilities.put(AbilityType.INTELLIGENCE, defaultScore);
-        abilities.put(AbilityType.WISDOM, defaultScore);
-        abilities.put(AbilityType.STRENGTH, defaultScore);
+        abilities = new Abilities();
+
 
     }
 
-    public HashMap<AbilityType, Integer> getAbilities() {
+    public Abilities getAbilities() {
         return abilities;
     }
 
     /**
      * Damage amount to be applied to this character after a successful hit.
+     *
      * @param damageAmount amount to be subtracted from hit points
      */
-    public void applyDamage(int damageAmount){
+    public void applyDamage(int damageAmount) {
         hitPoints -= damageAmount;
     }
 
-    public boolean isDead(){
+    public boolean isDead() {
         return hitPoints <= 0;
     }
 
     /**
      * Number of damage points based on a dice roll.
+     *
      * @param diceRoll A number from 1 to 20 returned by the dice roll.
      * @return Returns damage points that will affect hit points.
      */
-    public int getDamageAmount(int diceRoll)
-    {
+    public int getDamageAmount(int diceRoll) {
         int normalDamage = 1;
 
-        if(isCriticalHit(diceRoll)){
+        if (isCriticalHit(diceRoll)) {
             return normalDamage * 2;
-        }
-        else{
+        } else {
             return normalDamage;
         }
     }
 
-    private boolean isCriticalHit(int diceRoll){
+    private boolean isCriticalHit(int diceRoll) {
         return (diceRoll == 20);
     }
 
-    public boolean isHitSuccessful(int diceRoll, int enemyArmorClass){
+    public boolean isHitSuccessful(int diceRoll, int enemyArmorClass) {
         return (diceRoll >= enemyArmorClass);
     }
 
-    public int rollDice()
-    {
+    public int rollDice() {
         return new Random().nextInt(20) + 1;
     }
 
-    public int getArmorClass()
-    {
+    public int getArmorClass() {
         return armorClass;
     }
 
-    public int getHitPoints(){
+    public int getHitPoints() {
         return hitPoints;
     }
-    public String getName()
-    {
+
+    public String getName() {
         return name;
     }
-    public void setName(String name)
-    {
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Alignment getAlignment(){
+    public Alignment getAlignment() {
         return alignment;
     }
 
-    public void setAlignment(Alignment alignment){
+    public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
     }
 }

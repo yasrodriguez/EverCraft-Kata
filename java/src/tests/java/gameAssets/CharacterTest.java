@@ -26,7 +26,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestGetAlignmentReturnsWhatISetAlignmentTo(){
+    public void TestGetAlignmentReturnsWhatISetAlignmentTo() {
         //arrange
         Character c = new Character();
         Alignment expectedAlignment = Alignment.EVIL;
@@ -37,8 +37,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestArmorClassDefaultIs10()
-    {
+    public void TestArmorClassDefaultIs10() {
         //arrange
         Character c = new Character();
         int expectedArmorClass = 10;
@@ -51,7 +50,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestHitPointsDefaultIs5(){
+    public void TestHitPointsDefaultIs5() {
         //arrange
         Character c = new Character();
         int expectedHitPoints = 5;
@@ -64,7 +63,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatRollingDieIsAlwaysBetween1And20(){
+    public void TestThatRollingDieIsAlwaysBetween1And20() {
         //arrange
         Character c = new Character();
         int upper = 20;
@@ -78,7 +77,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatRollThatEqualsArmorClassHits(){
+    public void TestThatRollThatEqualsArmorClassHits() {
         //arrange
         Character c = new Character();
         int diceRoll = 5;
@@ -92,7 +91,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatRollThatExceedsArmorClassHits(){
+    public void TestThatRollThatExceedsArmorClassHits() {
         //arrange
         Character c = new Character();
         int diceRoll = 6;
@@ -106,7 +105,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatRollThatIsLessThanArmorClassDoesNotHit(){
+    public void TestThatRollThatIsLessThanArmorClassDoesNotHit() {
         //arrange
         Character c = new Character();
         int diceRoll = 4;
@@ -120,21 +119,20 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatA1To19DiceRollGives1damage(){
+    public void TestThatA1To19DiceRollGives1damage() {
         //arrange
         Character c = new Character();
         int expectedDamage = 1;
 
         //act
-        for(int i = 1; i < 20; i++)
-        {
+        for (int i = 1; i < 20; i++) {
             int actualDamage = c.getDamageAmount(i);
             assertEquals(expectedDamage, actualDamage); //assert
         }
     }
 
     @Test
-    public void TestThat20DiceRollGives2damage(){
+    public void TestThat20DiceRollGives2damage() {
         //arrange
         Character c = new Character();
         int expectedDamage = 2;
@@ -148,7 +146,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatApplyDamageReducesHitPointsByDamageAmount(){
+    public void TestThatApplyDamageReducesHitPointsByDamageAmount() {
         //arrange
         Character c = new Character();
         Character enemy = new Character();
@@ -164,7 +162,7 @@ public class CharacterTest {
     }
 
     @Test
-    public void TestThatCharacterIsDeadWhenHitPointsIs0(){
+    public void TestThatCharacterIsDeadWhenHitPointsIs0() {
         //arrange
         Character c = new Character();
         int currentHitPoints = c.getHitPoints();
@@ -173,11 +171,11 @@ public class CharacterTest {
         c.applyDamage(currentHitPoints);
 
         //assert
-         assertTrue(c.isDead());
+        assertTrue(c.isDead());
     }
 
     @Test
-    public void TestThatCharacterIsDeadWhenHitPointsIsNegative(){
+    public void TestThatCharacterIsDeadWhenHitPointsIsNegative() {
         //arrange
         Character c = new Character();
         int currentHitPoints = c.getHitPoints();
@@ -189,16 +187,5 @@ public class CharacterTest {
         assertTrue(c.isDead());
     }
 
-    @Test
-    public void getAbilities_newCharacter_ReturnsAbilitiesWithDefaultScore(){
-        //arrange
-        Character c = new Character();
-        int defaultScore = 10;
 
-        //act
-        HashMap<AbilityType,Integer> abilities = c.getAbilities();
-
-        //assert
-        assertTrue(abilities.size() == 6);
-    }
 }
